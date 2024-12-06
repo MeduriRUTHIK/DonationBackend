@@ -1,5 +1,4 @@
 package com.example.DonationSystem1.service;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +20,4 @@ private DonationRepository donationRepository;
 		// TODO Auto-generated method stub
 		return donationRepository.findAll();
 	}
-
 }
