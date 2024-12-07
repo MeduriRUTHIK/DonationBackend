@@ -23,11 +23,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User loginUser(String email, String password) {
-        // Check if user exists with the provided email and password
-        User user = userRepository.findByEmail(email);
-        if (user == null || !user.getPassword().equals(password)) {
+        // Check if user exists with the provided email
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        
+        // Check password
+        if (!user.getPassword().equals(password)) {
             throw new RuntimeException("Invalid credentials");
         }
+        
         return user; // Return the logged-in user
     }
 }
